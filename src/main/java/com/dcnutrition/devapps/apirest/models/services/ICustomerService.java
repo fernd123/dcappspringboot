@@ -2,8 +2,6 @@ package com.dcnutrition.devapps.apirest.models.services;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
-
 import com.dcnutrition.devapps.apirest.models.entity.Customer;
 
 public interface ICustomerService {
