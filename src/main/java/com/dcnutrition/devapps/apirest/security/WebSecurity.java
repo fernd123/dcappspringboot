@@ -1,6 +1,8 @@
 package com.dcnutrition.devapps.apirest.security;
 
 import static com.dcnutrition.devapps.apirest.security.Constants.LOGIN_URL;
+import static com.dcnutrition.devapps.apirest.security.Constants.USER_URL;
+
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,6 +47,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.cors().and()
 			.csrf().disable()
 			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
+			.and()
+			.authorizeRequests().antMatchers(HttpMethod.POST, USER_URL).permitAll()
 			.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager()));
