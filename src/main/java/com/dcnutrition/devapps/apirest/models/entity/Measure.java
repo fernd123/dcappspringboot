@@ -1,5 +1,4 @@
 package com.dcnutrition.devapps.apirest.models.entity;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,129 +13,228 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * A Measure.
+ */
 @Entity
-@Table(name="measure")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Measure implements Serializable{
+@Table(name = "measure")
+public class Measure implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private Long id;
+    private static final long serialVersionUID = 1L;
 
-	private Double weight; //peso
-	private Double waist; //cintura
-	private Double biceps;//biceps
-	private Double leg;   //pierna
-	private Double chest; //pecho
-	private Double gluteus; //glúteo
-	private Double maxFrecueny; // Para ciclistas
-	private Double minFrecuency;// Para ciclistas
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(name="create_at")
+    @Column(name="create_at")
 	@Temporal(TemporalType.DATE)
-	private Date createAt;
+    private Date createAt;
+    
+    @PrePersist
+   	public void prePersist() {
+   		this.createAt = new Date();
+   	}
 
-	@ManyToOne
-	@JsonIgnoreProperties("measures")
-	private Customer customer;
+    @Column(name = "weight")
+    private Double weight;
+    
+    @Column(name = "waist")
+    private Double waist;
 
-	@PrePersist
-	public void prePersist() {
-		this.createAt = new Date();
-	}
+    @Column(name = "biceps")
+    private Double biceps;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "leg")
+    private Double leg;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "chest")
+    private Double chest;
 
-	public Double getWeight() {
-		return weight;
-	}
+    @Column(name = "gluteus")
+    private Double gluteus;
 
-	public void setWeight(Double weight) {
-		this.weight = weight;
-	}
+    @Column(name = "max_frecuency")
+    private Double maxFrecuency;
 
-	public Double getWaist() {
-		return waist;
-	} 
+    @Column(name = "min_frecuency")
+    private Double minFrecuency;
 
-	public void setWaist(Double waist) {
-		this.waist = waist;
-	}
+    @ManyToOne
+    @JsonIgnoreProperties("measures")
+    @JsonBackReference
+    private Customer customer;
 
-	public Double getBiceps() {
-		return biceps;
-	}
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public Long getId() {
+        return id;
+    }
 
-	public void setBiceps(Double biceps) {
-		this.biceps = biceps;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Double getLeg() {
-		return leg;
-	}
+    public Date getCreateAt() {
+        return createAt;
+    }
 
-	public void setLeg(Double leg) {
-		this.leg = leg;
-	}
+    public Measure createAt(Date createAt) {
+        this.createAt = createAt;
+        return this;
+    }
 
-	public Double getChest() {
-		return chest;
-	}
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
 
-	public void setChest(Double chest) {
-		this.chest = chest;
-	}
+    public Double getWeight() {
+        return weight;
+    }
 
-	public Double getGluteus() {
-		return gluteus;
-	}
+    public Measure weight(Double weight) {
+        this.weight = weight;
+        return this;
+    }
 
-	public void setGluteus(Double gluteus) {
-		this.gluteus = gluteus;
-	}
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+    
+    public Double getWaist() {
+        return waist;
+    }
 
-	public Double getMaxFrecueny() {
-		return maxFrecueny;
-	}
+    public Measure waist(Double waist) {
+        this.waist = waist;
+        return this;
+    }
 
-	public void setMaxFrecueny(Double maxFrecueny) {
-		this.maxFrecueny = maxFrecueny;
-	}
+    public void setWaist(Double waist) {
+        this.waist = waist;
+    }
 
-	public Double getMinFrecuency() {
-		return minFrecuency;
-	}
+    public Double getBiceps() {
+        return biceps;
+    }
 
-	public void setMinFrecuency(Double minFrecuency) {
-		this.minFrecuency = minFrecuency;
-	}
+    public Measure biceps(Double biceps) {
+        this.biceps = biceps;
+        return this;
+    }
 
-	public Date getCreateAt() {
-		return createAt;
-	}
+    public void setBiceps(Double biceps) {
+        this.biceps = biceps;
+    }
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
+    public Double getLeg() {
+        return leg;
+    }
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+    public Measure leg(Double leg) {
+        this.leg = leg;
+        return this;
+    }
 
-	public Customer getCustomer() {
-		return this.customer;
-	}
-	private static final long serialVersionUID = 1L;
+    public void setLeg(Double leg) {
+        this.leg = leg;
+    }
 
+    public Double getChest() {
+        return chest;
+    }
+
+    public Measure chest(Double chest) {
+        this.chest = chest;
+        return this;
+    }
+
+    public void setChest(Double chest) {
+        this.chest = chest;
+    }
+
+    public Double getGluteus() {
+        return gluteus;
+    }
+
+    public Measure gluteus(Double gluteus) {
+        this.gluteus = gluteus;
+        return this;
+    }
+
+    public void setGluteus(Double gluteus) {
+        this.gluteus = gluteus;
+    }
+
+    public Double getMaxFrecuency() {
+        return maxFrecuency;
+    }
+
+    public Measure maxFrecueny(Double maxFrecuency) {
+        this.maxFrecuency = maxFrecuency;
+        return this;
+    }
+
+    public void setMaxFrecueny(Double maxFrecuency) {
+        this.maxFrecuency = maxFrecuency;
+    }
+
+    public Double getMinFrecuency() {
+        return minFrecuency;
+    }
+
+    public Measure minFrecueny(Double minFrecuency) {
+        this.minFrecuency = minFrecuency;
+        return this;
+    }
+
+    public void setMinFrecuency(Double minFrecuency) {
+        this.minFrecuency = minFrecuency;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Measure customer(Customer customer) {
+        this.customer = customer;
+        return this;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Measure)) {
+            return false;
+        }
+        return id != null && id.equals(((Measure) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    @Override
+    public String toString() {
+        return "Measure{" +
+            "id=" + getId() +
+            ", createAt='" + getCreateAt() + "'" +
+            ", weight=" + getWeight() +
+            ", biceps=" + getBiceps() +
+            ", leg=" + getLeg() +
+            ", chest=" + getChest() +
+            ", gluteus=" + getGluteus() +
+            ", maxFrecueny=" + getMaxFrecuency() +
+            ", minFrecueny=" + getMinFrecuency() +
+            "}";
+    }
 }

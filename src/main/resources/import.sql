@@ -1,6 +1,6 @@
 /* Populate tables */
---INSERT INTO customer (id, name, lastname, sex, height, birthday, city, email, phone, observations) VALUES(1, 'Fer', 'Rodriguez Sidro', 'Hombre', 175, '2000-01-01', 'Castellón', 'a@mail.com', '123', 'Sin observaciones');
---INSERT INTO customer (id, name, lastname, sex, height, birthday, city, email, phone, observations) VALUES(2, 'Javier', 'Pérez Mateo', 'Hombre', 180, '1998-01-01', 'Castellón', 'b@mail.com', '456', 'Sin observaciones');
+INSERT INTO customer (id, name, lastname, sex, height, birthday, city, email, phone, observations) VALUES(1, 'Fer', 'Rodriguez Sidro', 'Hombre', 175, '2000-01-01', 'Castellón', 'a@mail.com', '123', 'Sin observaciones');
+INSERT INTO customer (id, name, lastname, sex, height, birthday, city, email, phone, observations) VALUES(2, 'Javier', 'Pérez Mateo', 'Hombre', 180, '1998-01-01', 'Castellón', 'b@mail.com', '456', 'Sin observaciones');
 --INSERT INTO customer (id, name, lastname, sex, height, birthday, city, email, phone, observations) VALUES(3, 'Marcos', 'Rodríguez Ramíerez', 'Hombre', 160, '1997-01-01', 'Castellón', 'c@mail.com', '111', 'Sin observaciones');
 --INSERT INTO customer (id, name, lastname, sex, height, birthday, city, email, phone, observations) VALUES(4, 'Laura', 'Galera López', 'Mujer', 165, '1987-01-01', 'Castellón', 'f@mail.com', '777', 'Sin observaciones');
 --INSERT INTO customer (id, name, lastname, sex, height, birthday, city, email, phone, observations) VALUES(5, 'María', 'Martínez Escamilla', 'Mujer', 182, '1971-01-01', 'Castellón', 'g@mail.com', '88777', 'Sin observaciones');

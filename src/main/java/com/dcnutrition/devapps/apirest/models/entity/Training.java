@@ -1,4 +1,7 @@
 package com.dcnutrition.devapps.apirest.models.entity;
+
+
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,11 +20,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * A CustomerDate.
+ * A Training.
  */
 @Entity
-@Table(name = "customer_date")
-public class CustomerDate implements Serializable {
+@Table(name = "training")
+public class Training implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -38,20 +41,11 @@ public class CustomerDate implements Serializable {
    		this.createAt = new Date();
    	}
     
-    @Column(name = "start")
-    private Date start;
-
-    @Column(name = "end")
-    private Date end;
-
-    @Column(name = "color")
-    private String color;
-
-    @Column(name = "observations")
-    private String observations;
+    @Column(name = "name")
+    private String name;
 
     @ManyToOne
-    @JsonIgnoreProperties("customerDates")
+    @JsonIgnoreProperties("trainings")
     @JsonBackReference
     private Customer customer;
 
@@ -68,7 +62,7 @@ public class CustomerDate implements Serializable {
         return createAt;
     }
 
-    public CustomerDate createAt(Date createAt) {
+    public Training createAt(Date createAt) {
         this.createAt = createAt;
         return this;
     }
@@ -77,63 +71,24 @@ public class CustomerDate implements Serializable {
         this.createAt = createAt;
     }
 
-    public Date getStart() {
-        return start;
+    public String getName() {
+        return name;
     }
 
-    public CustomerDate start(Date start) {
-        this.start = start;
+    public Training name(String name) {
+        this.name = name;
         return this;
     }
 
-    public void setStart(Date start) {
-        this.start = start;
-    }
-
-    public Date getEnd() {
-        return end;
-    }
-
-    public CustomerDate end(Date end) {
-        this.end = end;
-        return this;
-    }
-
-    public void setEnd(Date end) {
-        this.end = end;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public CustomerDate color(String color) {
-        this.color = color;
-        return this;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getObservations() {
-        return observations;
-    }
-
-    public CustomerDate observations(String observations) {
-        this.observations = observations;
-        return this;
-    }
-
-    public void setObservations(String observations) {
-        this.observations = observations;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public CustomerDate customer(Customer customer) {
+    public Training customer(Customer customer) {
         this.customer = customer;
         return this;
     }
@@ -148,10 +103,10 @@ public class CustomerDate implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof CustomerDate)) {
+        if (!(o instanceof Training)) {
             return false;
         }
-        return id != null && id.equals(((CustomerDate) o).id);
+        return id != null && id.equals(((Training) o).id);
     }
 
     @Override
@@ -161,13 +116,10 @@ public class CustomerDate implements Serializable {
 
     @Override
     public String toString() {
-        return "CustomerDate{" +
+        return "Training{" +
             "id=" + getId() +
             ", createAt='" + getCreateAt() + "'" +
-            ", start='" + getStart() + "'" +
-            ", end='" + getEnd() + "'" +
-            ", color='" + getColor() + "'" +
-            ", observations='" + getObservations() + "'" +
+            ", name='" + getName() + "'" +
             "}";
     }
 }

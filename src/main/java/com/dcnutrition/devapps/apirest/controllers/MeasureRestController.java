@@ -45,6 +45,7 @@ public class MeasureRestController
 	public Measure save(@RequestBody Measure measure, @PathVariable Long customerId){
 		Customer customer = customerService.findById(customerId);
 		measure.setCustomer(customer);
+		
 		return measureService.save(measure);
 	}
 
@@ -59,7 +60,7 @@ public class MeasureRestController
 		currentMeasure.setChest(measure.getChest());
 		currentMeasure.setGluteus(measure.getGluteus());
 		currentMeasure.setLeg(measure.getLeg());
-		currentMeasure.setMaxFrecueny(measure.getMaxFrecueny());
+		currentMeasure.setMaxFrecueny(measure.getMaxFrecuency());
 		currentMeasure.setMinFrecuency(measure.getMinFrecuency());
 		
 		return measureService.save(currentMeasure);
