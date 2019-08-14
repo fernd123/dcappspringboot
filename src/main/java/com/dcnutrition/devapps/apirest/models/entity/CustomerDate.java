@@ -36,7 +36,11 @@ public class CustomerDate implements Serializable {
     @PrePersist
    	public void prePersist() {
    		this.createAt = new Date();
+   		this.date = this.start;
    	}
+    
+    @Column(name = "date")
+    private Date date;
     
     @Column(name = "start")
     private Date start;
@@ -75,6 +79,19 @@ public class CustomerDate implements Serializable {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public CustomerDate date(Date date) {
+        this.date = date;
+        return this;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Date getStart() {

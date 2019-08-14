@@ -45,8 +45,6 @@ public class CustomerDateRestController
 		Customer customer = customerService.findById(customerId);
 		date.setCustomer(customer);
 		CustomerDate c = dateService.save(date);
-		/*c.setCustomer(customer);
-		dateService.save(date); */
 		return c;
 	}
 
