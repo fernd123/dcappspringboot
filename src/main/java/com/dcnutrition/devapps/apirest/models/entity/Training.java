@@ -43,6 +43,9 @@ public class Training implements Serializable {
     
     @Column(name = "name")
     private String name;
+    
+    @Column(name = "route")
+    private String route;
 
     @ManyToOne
     @JsonIgnoreProperties("trainings")
@@ -83,6 +86,19 @@ public class Training implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public Training route(String route) {
+        this.route = route;
+        return this;
+    }
+
+    public void setRoute(String route) {
+        this.route = route;
+    }
+    
+    public String getRoute(String route) {
+		return this.route;
+	}
 
     public Customer getCustomer() {
         return customer;

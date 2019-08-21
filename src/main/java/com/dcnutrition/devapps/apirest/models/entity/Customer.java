@@ -2,7 +2,6 @@ package com.dcnutrition.devapps.apirest.models.entity;
 
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +9,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +20,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -42,7 +39,7 @@ public class Customer implements Serializable {
 	@Temporal(TemporalType.DATE)
     private Date createAt;
 
-    @Column(name = "name")
+    @Column(name = 	"name")
     private String name;
 
     @Column(name = "lastname")
@@ -55,7 +52,8 @@ public class Customer implements Serializable {
     private String height;
 
     @Column(name = "birthday")
-    private LocalDate birthday;
+	@Temporal(TemporalType.DATE)
+    private Date birthday;
 
     @Column(name = "phone")
     private String phone;
@@ -167,16 +165,16 @@ public class Customer implements Serializable {
         this.height = height;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public Customer birthday(LocalDate birthday) {
+    public Customer birthday(Date birthday) {
         this.birthday = birthday;
         return this;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

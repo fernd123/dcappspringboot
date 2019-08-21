@@ -6,6 +6,9 @@ public class Constants {
 
 	public static final String LOGIN_URL = "/login";
 	public static final String USER_URL = "/users/";
+	public static final String FILE_URL = "/api/files/{type}/{id}";
+
+	
 	public static final String HEADER_AUTHORIZACION_KEY = "Authorization";
 	public static final String TOKEN_BEARER_PREFIX = "Bearer ";
 

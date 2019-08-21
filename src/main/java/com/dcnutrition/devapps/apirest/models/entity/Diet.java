@@ -39,13 +39,16 @@ public class Diet implements Serializable {
 	public void prePersist() {
 		this.createAt = new Date();
 	}	
-	
+
 	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "route")
+	private String route;
 
 	@ManyToOne
 	@JsonIgnoreProperties("diets")
-    @JsonBackReference
+	@JsonBackReference
 	private Customer customer;
 
 	// jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -81,6 +84,19 @@ public class Diet implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Diet route(String route) {
+		this.route = route;
+		return this;
+	}
+
+	public void setRoute(String route) {
+		this.route = route;
+	}
+	
+	public String getRoute(String route) {
+		return this.route;
 	}
 
 	public Customer getCustomer() {
